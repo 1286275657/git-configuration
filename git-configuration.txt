@@ -1,0 +1,59 @@
+1.设置
+git config --global user.name "1286275657"
+git config --global user.email "1286275657@qq.com"
+
+2. 生成密钥
+ssh-keygen -t rsa -C "1286275657@qq.com"
+
+3.添加ssh
+
+4.测试
+ssh -T git@github.com
+
+5.克隆
+
+git remote add origin git@github.com:1286275657/learngit.git
+
+6.添加
+git add readme.txt
+
+7.提交
+git commit -m "wrote a readme file"
+
+8.创建长库后关联
+git remote add origin git@github.com:1286275657/learngit.git
+
+9.push
+第一次
+git push -u origin master
+以后
+git push origin master
+
+10.克隆
+
+11.分枝
+查看分支：git branch
+创建分支：git branch <name>
+切换分支：git checkout <name>
+创建+切换分支：git checkout -b <name>
+合并某分支到当前分支：git merge <name>
+删除分支：git branch -d <name>
+看到分支的合并情况：git log --graph --pretty=oneline --abbrev-commit
+
+12.bug分枝
+可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：
+ git stash
+完成回来后，刚才的工作现场存到哪去了？用git stash list命令看看：
+git stash list
+一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；
+另一种方式是用git stash pop，恢复的同时把stash内容也删了：
+ git stash pop
+再用git stash list查看，就看不到任何stash内容了：
+$ git stash list
+你可以多次stash，恢复的时候，先用git stash list查看，然后恢复指定的stash，用命令：
+$ git stash apply stash@{0}
+
+
+
+
+
