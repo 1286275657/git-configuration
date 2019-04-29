@@ -1,9 +1,9 @@
 1.设置
-git config --global user.name "1286275657"
-git config --global user.email "1286275657@qq.com"
+git config --global user.name "MyEmail"
+git config --global user.email "MyEmail@qq.com"
 
 2. 生成密钥
-ssh-keygen -t rsa -C "1286275657@qq.com"
+ssh-keygen -t rsa -C "MyEmail@qq.com"
 
 3.添加ssh
 
@@ -12,7 +12,7 @@ ssh -T git@github.com
 
 5.克隆
 
-git remote add origin git@github.com:1286275657/learngit.git
+git remote add origin git@github.com:MyEmail/learngit.git
 
 6.添加
 git add readme.txt
@@ -21,7 +21,7 @@ git add readme.txt
 git commit -m "wrote a readme file"
 
 8.创建长库后关联
-git remote add origin git@github.com:1286275657/learngit.git
+git remote add origin git@github.com:MyEmail/learngit.git
 
 9.push
 第一次
