@@ -1,0 +1,144 @@
+一，本地仓库
+1.安装软件，安装完成后自报家门：
+git config --global user.name "***"
+git config --global user.email "**@qq.com"
+
+2.创建仓库，转到想建立仓库的目录
+cd /C/Users/**/Desktop/PythonGui
+git init
+
+3.添加文件到仓库
+git add git使用.txt
+git commit -m "把文件第一次传入git"
+
+4.退回文件
+git log
+git log --pretty=oneline
+
+git reset --hard HEAD^
+上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+
+5.查看
+cat git使用.txt
+
+6.返回后面版本
+git reset --hard 1094a
+版本号没必要写全，前几位就可以了
+
+7.关机后重启回到后面版本
+git reflog
+查看命令历史，以便确定要回到未来的哪个版本
+
+8.git status
+可以查看文件状态
+
+9.删除和还原
+删除
+git rm git使用.txt
+git commit -m "remove git使用.txt"
+
+还原
+git checkout -- git使用.txt
+
+二.github仓库
+
+1.先添加Key
+ssh-keygen -t rsa -C "***@qq.com"
+
+2.关联仓库
+git remote add origin git@github.com:***/PythonGui.git
+
+3.将本地仓库所有内容推送到远程仓库上
+git push -u origin master
+
+4.以后推送
+git push origin master
+
+5.克隆
+git clone git@github.com:***/PythonGui.git
+
+三.分支管理
+
+1.创建并转到dev分支
+git checkout -b dev
+相当于
+git branch dev
+git check out dev
+
+2.查看分支  *代表当前分支
+git branch
+
+3.提交当前分支
+git add git使用.txt
+
+4.git commit -m "第三次提交到git"
+
+5.回到master分支
+git checkout master
+
+6.删除dev
+git branch -d dev
+
+7.git branch
+
+8.使用switch命令更好
+git switch -c dev 创建并转到dev
+
+git switch master
+
+
+9.流程：
+查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>或者git switch <name>
+
+创建+切换分支：git checkout -b <name>或者git switch -c <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+四，分支管理策略
+1.git merge --no-ff -m "merge with no-ff" dev
+强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+
+五.多人协作
+1.查看远程仓库名称
+git remote
+git remote -v
+
+2.上传 dev还是master
+git push origin dev
+
+3.小结
+查看远程库信息，使用git remote -v；
+
+本地新建的分支如果不推送到远程，对其他人就是不可见的；
+
+从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+
+在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+
+建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+
+从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+六.标签
+命令git tag <tagname>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+
+命令git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+
+命令git tag可以查看所有标签。
+
+命令git push origin <tagname>可以推送一个本地标签；
+
+命令git push origin --tags可以推送全部未推送过的本地标签；
+
+命令git tag -d <tagname>可以删除一个本地标签；
+
+命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
+
+
+七.使用SourceTree
